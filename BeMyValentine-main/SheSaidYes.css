@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Caprasimo&display=swap');
+
+* {
+    font-family: 'Caprasimo';
+    color: white;
+}
+
+iframe{
+    display: block;
+    justify-content: center;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+}
+
+body{
+    background-color: rgb(247, 156, 197);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
