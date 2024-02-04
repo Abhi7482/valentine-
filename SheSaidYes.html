@@ -8,12 +8,49 @@
 </head>
 
 <body>
-    <div align="center">
-        <!-- Remove controls and keep autoplay for the YouTube video -->
-        <iframe width="800px" height="500px" src="https://www.youtube.com/embed/0tOXxuLcaog?autoplay=1&controls=0" title="CHIPI CHIPI CHAPA CHAPA CAT 10 HOURS" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
-    </div>
+    <div id="youtube-player-container" align="center"></div>
     <h1>YAYY I LOVE YOU SO MUCH</h1>
 
     <!-- Add the GIF below the heading -->
     <div align="center">
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzJvNXEydHIyNjh0YndwMW92Z255bndoZ3NicnNtZGlidGcyOG11NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="GIF
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzJvNXEydHIyNjh0YndwMW92Z255bndoZ3NicnNtZGlidGcyOG11NCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/MDJ9IbxxvDUQM/giphy.gif" alt="GIF">
+    </div>
+
+    <script>
+        // Load the YouTube API script
+        const tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        const firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        let player;
+
+        // Callback function called when the API is ready
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('youtube-player-container', {
+                height: '500',
+                width: '800',
+                videoId: '0tOXxuLcaog',
+                playerVars: {
+                    'autoplay': 1,
+                    'controls': 0,
+                    'disablekb': 1, // Disable keyboard controls
+                    'fs': 0, // Disable fullscreen button
+                    'iv_load_policy': 3, // Disable video annotations
+                    'modestbranding': 1, // Minimal YouTube branding
+                    'rel': 0, // Disable related videos at the end
+                    'showinfo': 0 // Hide video title and uploader
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Autoplay the video when the player is ready
+            event.target.playVideo();
+        }
+    </script>
+</body>
+</html>
